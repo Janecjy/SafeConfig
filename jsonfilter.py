@@ -31,11 +31,19 @@ def main():
 	wordpressDefault = []
 	joomlaDefault = []
 	defaultList = [redisDefault, mongodbDefault, nginxDefault, sparkDefault, tomcatDefault, wordpressDefault, joomlaDefault]
-	sensitiveInfo = ["requirepass", "rename-command"]
+	redisSensitive = ["requirepass", "rename-command"]
+	mongodbSensitive = []
+	nginxSensitive = []
+	sparkSensitive = []
+	tomcatSensitive = []
+	wordpressSensitive = []
+	joomlaSensitive = []
+	sensitiveList = [redisSensitive, mongodbSensitive, nginxSensitive, sparkSensitive, tomcatSensitive, wordpressSensitive, joomlaSensitive]
 	dealingFunc = [dealPass, dealRename]
 
 	app_dict = {}
 	temp_dict = {}
+	sensitive_dict = {}
 
 	if sys.argv[1] not in app_type:
 		print("Application type not found.")
@@ -43,12 +51,14 @@ def main():
 
 	for i in range(len(app_type)):
 		app_dict[app_type[i]] = defaultList[i]
+		sensitive_dict[app_type[i]] = sensitiveList[i]
 
-	selected = app_dict[sys.argv[1]]
+	selectedKey = app_dict[sys.argv[1]]
+	sensitiveInfo = sensitive_dict[sys.argv[1]]
 
-	with open("./redis-conf.json") as f:
+	with open("./conftest/redis-conf.json") as f:
 		data = json.load(f)
-		for element in selected:
+		for element in selectedKey:
 			try:
 				if element in sensitiveInfo:
 					temp_dict[element] = dealingFunc[sensitiveInfo.index(element)](data[element])
@@ -56,7 +66,7 @@ def main():
 					temp_dict[element] = data[element]
 			except:
 				continue
-	with open("./redis-conf-selected.json","w") as target:
+	with open("./conftest/redis-conf-selected.json","w") as target:
 		json.dump(temp_dict,target)
 
 if __name__ == "__main__":
