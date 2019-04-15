@@ -27,7 +27,7 @@ def main():
 	mongodbDefault = []
 	nginxDefault = []
 	sparkDefault = []
-	tomcatDefault = []
+	tomcatDefault = ["Server"]
 	wordpressDefault = []
 	joomlaDefault = []
 	defaultList = [redisDefault, mongodbDefault, nginxDefault, sparkDefault, tomcatDefault, wordpressDefault, joomlaDefault]
@@ -56,7 +56,7 @@ def main():
 	selectedKey = app_dict[sys.argv[1]]
 	sensitiveInfo = sensitive_dict[sys.argv[1]]
 
-	with open("./conftest/redis-conf.json") as f:
+	with open("./conftest/server-conf.json") as f:
 		data = json.load(f)
 		for element in selectedKey:
 			try:
@@ -66,7 +66,7 @@ def main():
 					temp_dict[element] = data[element]
 			except:
 				continue
-	with open("./conftest/redis-conf-selected.json","w") as target:
+	with open("./conftest/server-conf-selected.json","w") as target:
 		json.dump(temp_dict,target)
 
 if __name__ == "__main__":
