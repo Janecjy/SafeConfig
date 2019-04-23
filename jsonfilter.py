@@ -56,7 +56,9 @@ def main():
 	selectedKey = app_dict[sys.argv[1]]
 	sensitiveInfo = sensitive_dict[sys.argv[1]]
 
-	with open("./conftest/server-conf.json") as f:
+	json_file_name = "./conftest/" + sys.argv[1] + "-conf.json"
+
+	with open(json_file_name) as f:
 		data = json.load(f)
 		for element in selectedKey:
 			try:
