@@ -22,7 +22,7 @@
       enableLookups="false"
       acceptCount="10"
       connectionTimeout="60000" debug="0"
-       scheme="https" secure="true">
+       scheme="https" secure="true" SSLEnabled="true">
     <Factory
       className="org.apache.coyote.tomcat4.CoyoteServerSocketFactory"
              clientAuth="false" protocol="TLS"
