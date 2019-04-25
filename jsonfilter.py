@@ -52,12 +52,12 @@ def main():
 	joomlaDefault = []
 	defaultList = [redisDefault, mongodbDefault, nginxDefault, sparkDefault, tomcatDefault, wordpressDefault, joomlaDefault]
 	redisSensitive = ["requirepass", "rename-command"]
-	mongodbSensitive = ['AUTH_KEY','SECURE_AUTH_KEY','LOGGED_IN_KEY','NONCE_KEY','AUTH_SALT','SECURE_AUTH_SALT','LOGGED_IN_SALT',
-	'NONCE_SALT','DB_PASSWORD']
+	mongodbSensitive = []
 	nginxSensitive = ["","","ssl_ciphers", "ssl_certificate", "ssl_certificate_key"]
 	sparkSensitive = ["","","spark.ssl.trustStore", "spark.ssl.trustStorePassword"]
 	tomcatSensitive = ["web-resource-name", "transport-guarantee"]
-	wordpressSensitive = []
+	wordpressSensitive = ['AUTH_KEY','SECURE_AUTH_KEY','LOGGED_IN_KEY','NONCE_KEY','AUTH_SALT','SECURE_AUTH_SALT','LOGGED_IN_SALT',
+	'NONCE_SALT','DB_PASSWORD']
 	joomlaSensitive = []
 	sensitiveList = [redisSensitive, mongodbSensitive, nginxSensitive, sparkSensitive, tomcatSensitive, wordpressSensitive, joomlaSensitive]
 	redisDealingFunc = [dealPass, dealRename]
