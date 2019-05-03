@@ -3,7 +3,7 @@ def dealContext(secret):
 
 def init():
 	app_dict = {}
-	tomcatDefault = ["@shutdown", "@SSLEnabled", "web-resource-name", "url-pattern", "transport-guarantee"]
+	tomcatDefault = ["@shutdown", "@SSLEnabled", "web-resource-name", "url-pattern", "transport-guarantee", "http-only", "secure"]
 	tomcatSensitive = ["web-resource-name", "transport-guarantee"]
 	tomcatDealingFunc = [dealContext, dealContext]
 	app_dict["default"] = tomcatDefault
