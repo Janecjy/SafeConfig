@@ -55,3 +55,10 @@ def mongodb_security_check(filename):
         js_disabled = True
     
     #write info from relevant params to json
+    final_dict = {}
+    final_dict['network restrictions'] = network_restrictions
+    final_dict['access control'] = access_ctrl
+    final_dict['encrypted comm'] = encrypted_comm
+    final_dict['membership autherization'] = membership_auth
+    final_dict['data encryption'] = data_enc
+    final_dict['misc'] = js_disabled
