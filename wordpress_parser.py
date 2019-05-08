@@ -32,5 +32,5 @@ for l in lines:
         else:
             pub_data['prefix_changed'] = 'True'
 
-with open('data.json', 'w') as fp:
+with open('wordpress-conf.json', 'w') as fp:
     json.dump(pub_data, fp)
