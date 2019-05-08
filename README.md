@@ -159,6 +159,9 @@ In web.xml:
   <secure>true</secure>
   </cookie-config>
   ```
+### MongoDB
+Configuration is specified at run time, therefore no user centric sensitive information was found in example configs.
+Therefore MongoDB config files only need parsing (and not filtering).
 
 ## Code Structure
 
