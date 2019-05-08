@@ -179,6 +179,6 @@ For the application filters, they include a list of security relevant keywords f
 
 For example, dealPass in redisfilter.py returns six stars if the password contains at least a lowercase letter, an uppercase letter and a digit, and the length of the password should be greater than or equal to 8. It returns "not secure password" if it's considered as not secure.
 
-###Checking
+### Checking
 
 The checking functions vary for applications. But we're applying the most rigorous requirements: only when everything in the security relevant list are included in the configuration and the sensitive information are checked as secure, the checking function will return true.
