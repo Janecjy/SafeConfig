@@ -1,5 +1,7 @@
 def checkSecurePass(password):
-	hasLower, hasHigher, hasDigit = False, False, False
+	hasLower, hasHigher, hasDigit, longEnough = False, False, False, False
+	if len(password) >= 8:
+		longEnough = True
 	for letter in password:
 		hasLower = hasLower or letter.islower()
 		hasHigher = hasHigher or letter.isupper()

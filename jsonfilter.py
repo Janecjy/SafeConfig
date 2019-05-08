@@ -6,7 +6,6 @@ import nginxfilter
 import sparkfilter
 import tomcatfilter
 import wordpressfilter
-import joomlafilter
 
 def extract_info(obj, keys, sensitive, temp_dict, dealingFunc, flat_dict):
 	if isinstance(obj, dict):
@@ -25,7 +24,7 @@ def extract_info(obj, keys, sensitive, temp_dict, dealingFunc, flat_dict):
 			extract_info(item, keys, sensitive, temp_dict, dealingFunc, flat_dict)
 
 def main():
-	app_type = ["redis", "mongodb", "nginx", "spark", "tomcat", "wordpress", "joomla"]
+	app_type = ["redis", "mongodb", "nginx", "spark", "tomcat", "wordpress"]
 	app_dict = {key: eval(key+"filter") for key in app_type}
 
 	temp_dict = {}
