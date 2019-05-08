@@ -1,18 +1,16 @@
 def checkSecurePass(password):
+	hasLower, hasHigher, hasDigit = False, False, False
 	for letter in password:
-		hasLower = letter.islower()
-		hasHigher = letter.isupper()
-		hasDigit = letter.isdigit()
+		hasLower = hasLower or letter.islower()
+		hasHigher = hasHigher or letter.isupper()
+		hasDigit = hasDigit or letter.isdigit()
 	return hasLower and hasHigher and hasDigit
 
 def dealPass(password):
-	content = ""
 	if checkSecurePass(password) == True:
-		for x in range(len(password)):
-			content += "*"
+		return "******"
 	else:
-		content = "not secure password"
-	return content
+		return "not secure password"
 
 def dealRename(command):
 	return command.split()[0] + " " + "******"
