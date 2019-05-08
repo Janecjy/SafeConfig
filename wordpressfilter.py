@@ -19,7 +19,7 @@ def dealRename(command):
 
 def init():
 	app_dict = {}
-	wordpressDefault = []
+	wordpressDefault = ['prefix_changed']
 	wordpressSensitive = ['AUTH_KEY', 'SECURE_AUTH_KEY', 'LOGGED_IN_KEY', 'NONCE_KEY', 'AUTH_SALT', 'SECURE_AUTH_SALT',
 						  'LOGGED_IN_SALT',
 						  'NONCE_SALT', 'DB_PASSWORD']
