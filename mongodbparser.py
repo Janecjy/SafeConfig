@@ -1,16 +1,7 @@
-def init():
-	app_dict = {}
-	mongodbDefault = []
-	mongodbSensitive = []
-	mongodbDealingFunc = []
-	app_dict["default"] = mongodbDefault
-	app_dict["sensitive"] = mongodbSensitive
-	app_dict["dealingFunc"] = mongodbDealingFunc
-	return app_dict
-
 import yaml
 import json
 
+#Run time arguments do not have sensitive data in the context of our filter
 def mongodb_security_check(filename):
     stream = open(filename, 'r')
     conf = yaml.load(stream)
@@ -63,5 +54,5 @@ def mongodb_security_check(filename):
     final_dict['data encryption'] = data_enc
     final_dict['misc'] = js_disabled
 
-    with open('./conftest/mongo_parsed.json','w') as f:
+    with open('./conftest/mongodb_parsed.json','w') as f:
     	f = json.dump(final_dict,f)
