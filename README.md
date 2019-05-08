@@ -60,7 +60,7 @@ To secure redis.conf securely, we consider the following keywords in the configu
 
   This should be a sensitive information because we don't want the clear text of password to appear in the configuration that we show.
 
-  To check whether it's secure, we're applying the simple checking process whether the password contains at least a lowercase letter, an uppercase letter and a digit.
+  To check whether it's secure, we're applying the simple checking process whether the password contains at least a lowercase letter, an uppercase letter and a digit, and the length of the password should be greater than or equal to 8.
 
   e.g. 
 
@@ -166,10 +166,16 @@ We constructed a pipeline framework with three phases: parsing, filtering and ch
 
 ### Parsing
 
-
+Every application has its own parser. The use of parser is to generate a json file according to the input configuration file. This helps the next steps to deal with files with the same format.
 
 ### Filtering
 
+We have a common filter jsonfilter.py that extracts security relevant information from the parsed json files and replaces the sensitive information. It includes the filters of applications that it covers.
 
+For the application filters, they include a list of security relevant keywords for this application and a list of sensitive information in the security relevant configuration. It provides dealing functions for sensitive information, which mostly replace the sensitive information according to whether it's secure or not.
+
+For example, dealPass in redisfilter.py returns six stars if the password contains at least a lowercase letter, an uppercase letter and a digit, and the length of the password should be greater than or equal to 8. It returns "not secure password" if it's considered as not secure.
 
 ###Checking
+
+The checking functions vary for applications. But we're applying the most rigorous requirements: only when everything in the security relevant list are included in the configuration and the sensitive information are checked as secure, the checking function will return true.
